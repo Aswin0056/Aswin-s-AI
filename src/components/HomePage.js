@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../components/HomePage.css'; // or wherever you saved the CSS file
+import '../styles/HomePage.css'; // or wherever you saved the CSS file
 
 const HomePage = () => {
   return (
     <div className="homepage">
+      <img src={`${process.env.PUBLIC_URL}/logo192.png`} alt="logo" className="home-logo" />
       <header>
         <h1>Welcome to Aswin's AI Chat Application</h1>
         <p>Your personal AI assistant ready to help you with any questions!</p>
@@ -25,6 +26,17 @@ const HomePage = () => {
           <button className="chat-button">Start Chat</button>
         </Link>
       </div>
+
+      <footer class="footer">
+  <p>© 2025 Aswin's AI Chat. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/contact">Contact</a>
+    <a href="https://github.com/your-repo" target="#">GitHub</a>
+  </div>
+</footer>
+
+
     </div>
   );
 };

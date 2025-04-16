@@ -6,6 +6,12 @@ body {
     padding: 0;
   }
   
+.home-logo{
+    height: 80px;
+    width: 100px;
+}
+
+
   /* Main container for the homepage */
   .homepage {
     display: flex;
@@ -15,6 +21,7 @@ body {
     height: 100vh;
     text-align: center;
     padding: 20px;
+    margin-top: 100px;
   }
   
   /* Header styles */
@@ -94,5 +101,107 @@ body {
     bottom: 20px;
     font-size: 1rem;
     color: #888;
+  }
+  
+
+
+  @media screen and (max-width: 768px) {
+    .homepage {
+      padding: 10px;
+    }
+  
+    .home-logo {
+      height: 60px;
+      width: 80px;
+    }
+  
+    .homepage h1 {
+      font-size: 2.2rem;
+    }
+  
+    .homepage p {
+      font-size: 1rem;
+    }
+  
+    .homepage section {
+      padding: 15px;
+      margin-bottom: 30px;
+    }
+  
+    .homepage h2 {
+      font-size: 1.6rem;
+    }
+  
+    .homepage ul li {
+      font-size: 1rem;
+    }
+  
+    .chat-button {
+      padding: 12px 24px;
+      font-size: 1rem;
+    }
+  
+    .footer {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .home-logo {
+      height: 50px;
+      width: 70px;
+    }
+  
+    .homepage h1 {
+      font-size: 1.8rem;
+      font-family: cursive;
+    }
+  
+    .homepage p {
+      font-size: 0.95rem;
+    }
+  
+    .homepage h2 {
+      font-size: 1.4rem;
+    }
+  
+    .chat-button {
+      padding: 10px 20px;
+      font-size: 0.95rem;
+    }
+  
+    .footer {
+      font-size: 0.85rem;
+    }
+    /* .homepage{
+      margin-top: 40px;
+    } */
+  }
+  
+
+  .footer {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #666;
+    border-top: 1px solid #ddd;
+    position: relative;
+  }
+  
+  .footer-links {
+    margin-top: 10px;
+  }
+  
+  .footer-links a {
+    margin: 0 10px;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover {
+    color: #0056b3;
   }
   
