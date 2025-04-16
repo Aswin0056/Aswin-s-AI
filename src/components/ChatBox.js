@@ -16,7 +16,7 @@ const ChatBox = () => {
     setUserMessage("");
 
     try {
-      const res = await axios.post("http://localhost:5000/api/chat", {
+      const res = await axios.post("https://ai-backend-gqxc.onrender.com/api/chat", {
         message: userMessage,
       });
       setMessages([
