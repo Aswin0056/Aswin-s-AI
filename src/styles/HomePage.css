@@ -1,207 +1,281 @@
 /* Global Styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f5f5f5;
     margin: 0;
     padding: 0;
-  }
-  
-.home-logo{
-    height: 80px;
-    width: 100px;
+    color: #333;
 }
 
-
-  /* Main container for the homepage */
-  .homepage {
+/* Main container for the homepage */
+.homepage {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
     text-align: center;
-    padding: 20px;
+    padding: 0 20px;
     margin-top: 100px;
-  }
-  
-  /* Header styles */
-  .homepage header {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.home-logo{
+  height: 80px;
+  width: 100px;
+  margin-top: 180px;
+}
+
+/* Header styles */
+.homepage header {
     margin-bottom: 30px;
-  }
-  
-  .homepage h1 {
-    font-size: 3rem;
-    color: #333;
+}
+
+.homepage h1 {
+    font-size: 3.5rem;
+    color: #222;
     margin-bottom: 10px;
-  }
-  
-  .homepage p {
-    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.homepage p {
+    font-size: 1.25rem;
     color: #555;
-  }
-  
-  /* Specifications section styles */
-  .homepage section {
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Specifications section styles */
+.homepage section {
     margin-bottom: 40px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    max-width: 600px;
+    padding: 25px;
+    background-color: #ffffff;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    max-width: 700px;
     width: 100%;
-  }
-  
-  .homepage h2 {
-    font-size: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.homepage section:hover {
+    transform: translateY(-5px);
+}
+
+.homepage h2 {
+    font-size: 2.25rem;
     color: #007bff;
     margin-bottom: 20px;
-  }
-  
-  .homepage ul {
+    font-weight: bold;
+}
+
+.homepage ul {
     list-style-type: none;
     padding: 0;
-  }
-  
-  .homepage ul li {
+}
+
+.homepage ul li {
     font-size: 1.1rem;
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     text-align: left;
-  }
-  
-  .homepage ul li::before {
+    padding-left: 30px;
+}
+
+.homepage ul li::before {
     content: "✔️ ";
     color: #28a745;
-  }
-  
-  /* Button container styles */
-  .chat-button-container {
+    font-size: 1.2rem;
+}
+
+/* Button container styles */
+.chat-button-container {
     margin-top: 20px;
-  }
-  
-  .chat-button {
+}
+
+.chat-button {
     background-color: #007bff;
     color: white;
-    padding: 15px 30px;
+    padding: 18px 40px;
     font-size: 1.2rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
     text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-  
-  .chat-button:hover {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0px 10px 15px rgba(0, 123, 255, 0.2);
+}
+
+.chat-button:hover {
     background-color: #0056b3;
-  }
-  
-  /* Footer (optional if you want to add it later) */
-  .footer {
-    position: absolute;
-    bottom: 20px;
-    font-size: 1rem;
-    color: #888;
-  }
-  
+    transform: scale(1.05);
+}
 
+.chat-button:active {
+    transform: scale(1);
+}
 
-  @media screen and (max-width: 768px) {
-    .homepage {
-      padding: 10px;
-    }
-  
-    .home-logo {
-      height: 60px;
-      width: 80px;
-    }
-  
-    .homepage h1 {
-      font-size: 2.2rem;
-    }
-  
-    .homepage p {
-      font-size: 1rem;
-    }
-  
-    .homepage section {
-      padding: 15px;
-      margin-bottom: 30px;
-    }
-  
-    .homepage h2 {
-      font-size: 1.6rem;
-    }
-  
-    .homepage ul li {
-      font-size: 1rem;
-    }
-  
-    .chat-button {
-      padding: 12px 24px;
-      font-size: 1rem;
-    }
-  
-    .footer {
-      font-size: 0.9rem;
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .home-logo {
-      height: 50px;
-      width: 70px;
-    }
-  
-    .homepage h1 {
-      font-size: 1.8rem;
-      font-family: cursive;
-    }
-  
-    .homepage p {
-      font-size: 0.95rem;
-    }
-  
-    .homepage h2 {
-      font-size: 1.4rem;
-    }
-  
-    .chat-button {
-      padding: 10px 20px;
-      font-size: 0.95rem;
-    }
-  
-    .footer {
-      font-size: 0.85rem;
-    }
-    /* .homepage{
-      margin-top: 40px;
-    } */
-  }
-  
-
-  .footer {
-    margin-top: 40px;
+/* Footer (optional) */
+.footer {
     padding: 20px;
     background-color: #f0f0f0;
     text-align: center;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #666;
     border-top: 1px solid #ddd;
-    position: relative;
-  }
-  
-  .footer-links {
-    margin-top: 10px;
-  }
-  
-  .footer-links a {
-    margin: 0 10px;
+    margin-top: 50px;
+}
+
+.footer-links {
+    margin-top: 15px;
+}
+
+.footer-links a {
+    margin: 0 12px;
     color: #007bff;
     text-decoration: none;
     transition: color 0.3s ease;
-  }
-  
-  .footer-links a:hover {
+}
+
+.footer-links a:hover {
     color: #0056b3;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .homepage {
+      padding: 20px;
+      margin-top: 60px; /* Adjust for better spacing */
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   }
-  
+
+  .home-logo {
+      height: 55px;
+      width: 75px;
+  }
+
+  .homepage h1 {
+      font-size: 2.3rem;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+  }
+
+  .homepage p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #666;
+  }
+
+  /* Reduced card size */
+  .homepage section {
+      padding: 20px; /* Decrease padding */
+      margin-bottom: 30px; /* Slightly reduce bottom margin */
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* Reduce shadow size */
+      max-width: 90%; /* Limit width for smaller screens */
+  }
+
+  .homepage h2 {
+      font-size: 1.75rem;
+      color: #007bff;
+      margin-bottom: 18px;
+  }
+
+  .homepage ul li {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: #333;
+      padding-left: 30px;
+  }
+
+  .homepage ul li::before {
+      content: "✔️ ";
+      color: #28a745;
+      font-size: 1.2rem;
+  }
+
+  .chat-button {
+      padding: 14px 32px;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      background-color: #007bff;
+      color: white;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+  }
+
+  .chat-button:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+  }
+
+  .footer {
+      font-size: 0.95rem;
+      padding: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .homepage {
+      padding: 15px;
+      margin-top: 50px;
+  }
+
+  .home-logo {
+      height: 45px;
+      width: 65px;
+  }
+
+  .homepage h1 {
+      font-size: 1.8rem;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.3;
+      letter-spacing: 0.5px;
+  }
+
+  .homepage p {
+      font-size: 0.95rem;
+      color: #777;
+  }
+
+  /* Reduced card size */
+  .homepage section {
+      padding: 15px; /* Further reduce padding */
+      margin-bottom: 20px; /* Slightly reduce bottom margin */
+      box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); /* Further reduce shadow */
+      max-width: 85%; /* Reduce the maximum width */
+  }
+
+  .homepage h2 {
+      font-size: 1.6rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+  }
+
+  .chat-button {
+      padding: 12px 28px;
+      font-size: 1.1rem;
+      border-radius: 28px;
+      box-shadow: 0px 8px 15px rgba(0, 123, 255, 0.2);
+  }
+
+  .footer {
+      font-size: 0.85rem;
+      padding: 12px;
+      color: #666;
+  }
+
+  /* Adjust for small text and padding */
+  .homepage ul li {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      padding-left: 25px;
+  }
+
+  .homepage ul li::before {
+      content: "✔️ ";
+      color: #28a745;
+      font-size: 1rem;
+  }
+}
