@@ -219,12 +219,13 @@ body {
 @media screen and (max-width: 480px) {
   .homepage {
       padding: 15px;
-      margin-top: 50px;
+      margin-top: 0px;
   }
 
   .home-logo {
       height: 45px;
       width: 65px;
+
   }
 
   .homepage h1 {

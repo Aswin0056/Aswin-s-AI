@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import Message from "./Message";
+import Message from "./Message"; // Ensure this import is correct
 import axios from "axios";
 import "../styles/ChatBox.css";
 import Ping from "./Ping";
@@ -19,9 +19,15 @@ const ChatBox = () => {
     scrollToBottom();
   }, [messages, typing]);
 
+  // Define the toggleDarkMode function
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    document.body.classList.toggle("dark-mode", !darkMode);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!userMessage.trim()) return;
+    if (!userMessage.trim()) return; // Do not submit empty messages
 
     const newMessages = [...messages, { sender: "user", text: userMessage }];
     setMessages(newMessages);
@@ -41,13 +47,15 @@ const ChatBox = () => {
 
       if (botResponse.fallback) {
         const googleURL = botResponse.answer.match(/https?:\/\/[^ ]+/)?.[0];
-        const fallbackMessage = (
+        const fallbackMessage = googleURL ? (
           <span>
             I couldn’t find an answer. Try searching:{" "}
             <a href={googleURL} target="_blank" rel="noopener noreferrer">
               Google
             </a>
           </span>
+        ) : (
+          "I couldn’t find an answer. Try rephrasing your question."
         );
         setMessages([...newMessages, { sender: "ai", text: fallbackMessage }]);
       } else {
@@ -64,10 +72,8 @@ const ChatBox = () => {
     }
   };
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    document.body.classList.toggle("dark-mode", !darkMode);
-  };
+  // Debounce the handleSubmit method if necessary for better performance (optional)
+  // const debouncedSubmit = debounce(handleSubmit, 500);
 
   return (
     <div className={`chatbox ${darkMode ? "dark" : ""}`}>
@@ -98,7 +104,7 @@ const ChatBox = () => {
           value={userMessage}
           onChange={(e) => setUserMessage(e.target.value)}
         />
-        <button type="submit">Send</button>
+        <button type="submit" disabled={typing}>Send</button>
       </form>
       <p className="creation-label">created by Aswin</p>
     </div>
