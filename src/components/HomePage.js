@@ -11,7 +11,7 @@ const HomePage = () => {
       <nav className="header-nav">
         <div className="nav-logo">
           <img src={`${process.env.PUBLIC_URL}/logo192.png`} alt="logo" />
-          <span>LIX - AI</span>
+          <span>LIX</span>
         </div>
 
         {/* Hamburger Icon */}
@@ -28,7 +28,7 @@ const HomePage = () => {
 
       {/* Main Content */}
       <header className="homepage-header">
-        <h1>Welcome to LIX - AI</h1>
+        <h1>Welcome to LIX</h1>
         <p>Your personal AI assistant ready to help you with any questions!</p>
       </header>
 
@@ -49,7 +49,7 @@ const HomePage = () => {
       </div>
 
       <footer className="footer">
-        <p>© 2025 LIX - AI. All rights reserved.</p>
+        <p>© 2025 LIX. All rights reserved.</p>
         <div className="footer-links">
           <a href="/">Privacy Policy</a>
           <a href="/">Contact</a>

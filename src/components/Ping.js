@@ -41,7 +41,7 @@ const Ping = () => {
           }}
         ></span>
         <span>
-          AI:{" "}
+          LIX:{" "}
           {status === "connected"
             ? "Online"
             : status === "error"

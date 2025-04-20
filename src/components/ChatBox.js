@@ -68,7 +68,7 @@ const ChatBox = () => {
     <div className={`chatbox-wrapper ${darkMode ? "dark" : ""}`}>
       <div className="sidebar">
         <div className="chatbox-header">
-          <h1>LIX - AI </h1>
+          <h1>LIX</h1>
           <Ping />
         </div>
         <button className="dark-toggle" onClick={toggleDarkMode}>
