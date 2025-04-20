@@ -120,24 +120,6 @@
 .chat-form input:focus {
   border-color: whitesmoke;
 }
-.mic button {
-  padding: 12px 20px;
-  background-color: black;
-  color: white;
-  font-size: 1rem;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-}
-.mic button:hover {
-  transform: translateY(-2px);
-  background-color: grey;
-}
-.mic button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
-}
 
 /* Footer */
 .creation-label {
@@ -152,7 +134,36 @@
   gap: 1px;
 }
 
+.SM-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Mic Button Smaller */
+.mic button {
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.mic button:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
+
+/* Submit Button Full Width */
+.sub {
+  flex: 1;
+}
 .sub button {
+  width: 100%;
   padding: 12px 20px;
   background-color: black;
   color: white;
@@ -170,6 +181,7 @@
   background: #ccc;
   cursor: not-allowed;
 }
+
 
 
 /* Tablet view */
@@ -193,6 +205,7 @@
     font-size: 0.9rem;
     padding: 6px 12px;
   }
+  
 }
 
 /* Mobile view */
@@ -282,15 +295,18 @@
     height: 60px;
   }
 
-  .sub button{
-    width: 235px;
+  .sub button {
+    width: 100%;
   }
+  
 
   .mic button{
     margin-top: -2px;
   }
 
 }
+
+
 
 .mic {
   position: relative;
