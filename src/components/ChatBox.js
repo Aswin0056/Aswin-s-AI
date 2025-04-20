@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import Message from "./Message"; // Ensure this import is correct
+import Message from "./Message"; // Ensure this is your message bubble component
 import axios from "axios";
 import "../styles/ChatBox.css";
-import Ping from "./Ping";
+import Ping from "./Ping"; // Optional ping status component
 
 const ChatBox = () => {
   const [userMessage, setUserMessage] = useState("");
@@ -19,15 +19,13 @@ const ChatBox = () => {
     scrollToBottom();
   }, [messages, typing]);
 
-  // Define the toggleDarkMode function
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
-    document.body.classList.toggle("dark-mode", !darkMode);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!userMessage.trim()) return; // Do not submit empty messages
+    if (!userMessage.trim()) return;
 
     const newMessages = [...messages, { sender: "user", text: userMessage }];
     setMessages(newMessages);
@@ -50,9 +48,7 @@ const ChatBox = () => {
         const fallbackMessage = googleURL ? (
           <span>
             I couldn’t find an answer. Try searching:{" "}
-            <a href={googleURL} target="_blank" rel="noopener noreferrer">
-              Google
-            </a>
+            <a href={googleURL} target="_blank" rel="noopener noreferrer">Google</a>
           </span>
         ) : (
           "I couldn’t find an answer. Try rephrasing your question."
@@ -61,52 +57,49 @@ const ChatBox = () => {
       } else {
         setMessages([...newMessages, { sender: "ai", text: botResponse.answer }]);
       }
-
     } catch (err) {
-      setMessages([
-        ...newMessages,
-        { sender: "ai", text: "Error connecting to AI server." },
-      ]);
+      setMessages([...newMessages, { sender: "ai", text: "Error connecting to AI server." }]);
     } finally {
       setTyping(false);
     }
   };
 
-  // Debounce the handleSubmit method if necessary for better performance (optional)
-  // const debouncedSubmit = debounce(handleSubmit, 500);
-
   return (
-    <div className={`chatbox ${darkMode ? "dark" : ""}`}>
-      <div className="chatbox-header">
-        <h1>Chat with Aswin's AI</h1>
-        <Ping />
+    <div className={`chatbox-wrapper ${darkMode ? "dark" : ""}`}>
+      <div className="sidebar">
+        <div className="chatbox-header">
+          <h1>LIX - AI </h1>
+          <Ping />
+        </div>
         <button className="dark-toggle" onClick={toggleDarkMode}>
-          {darkMode ? "☀️" : "🌙"}
+          {darkMode ? "☀️ Light" : "🌙 Dark"}
         </button>
       </div>
 
-      <div className="chat-messages">
-        {messages.map((msg, i) => (
-          <Message key={i} sender={msg.sender} text={msg.text} />
-        ))}
-        {typing && (
-          <div className="typing-indicator">
-            <span></span><span></span><span></span>
-          </div>
-        )}
-        <div ref={chatEndRef}></div>
-      </div>
+      <div className={`chatbox ${darkMode ? "dark" : ""}`}>
+        <div className="chat-messages">
+          {messages.map((msg, i) => (
+            <Message key={i} sender={msg.sender} text={msg.text} />
+          ))}
+          {typing && (
+            <div className="typing-indicator">
+              <span></span><span></span><span></span>
+            </div>
+          )}
+          <div ref={chatEndRef}></div>
+        </div>
 
-      <form className="chat-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Ask something to Aswin's AI..."
-          value={userMessage}
-          onChange={(e) => setUserMessage(e.target.value)}
-        />
-        <button type="submit" disabled={typing}>Send</button>
-      </form>
-      <p className="creation-label">created by Aswin</p>
+        <form className="chat-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Ask something to Aswin's AI..."
+            value={userMessage}
+            onChange={(e) => setUserMessage(e.target.value)}
+          />
+          <button type="submit" disabled={typing}>Send</button>
+        </form>
+        <p className="creation-label">created by Aswin</p>
+      </div>
     </div>
   );
 };

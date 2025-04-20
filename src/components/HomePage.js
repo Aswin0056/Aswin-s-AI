@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/HomePage.css'; // or wherever you saved the CSS file
+import '../styles/HomePage.css';
 
 const HomePage = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="homepage">
-      <img src={`${process.env.PUBLIC_URL}/logo192.png`} alt="logo" className="home-logo" />
-      <header>
-        <h1>Welcome to Aswin's AI Chat Application</h1>
+      {/* Header Navigation */}
+      <nav className="header-nav">
+        <div className="nav-logo">
+          <img src={`${process.env.PUBLIC_URL}/logo192.png`} alt="logo" />
+          <span>LIX - AI</span>
+        </div>
+
+        {/* Hamburger Icon */}
+        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </button>
+
+        <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
+          <li><Link to="/chat" onClick={() => setMenuOpen(false)}>Chat</Link></li>
+          <li><Link to="/about" onClick={() => setMenuOpen(false)}>About</Link></li>
+        </ul>
+      </nav>
+
+      {/* Main Content */}
+      <header className="homepage-header">
+        <h1>Welcome to LIX - AI</h1>
         <p>Your personal AI assistant ready to help you with any questions!</p>
       </header>
 
@@ -27,16 +48,14 @@ const HomePage = () => {
         </Link>
       </div>
 
-      <footer class="footer">
-  <p>© 2025 Aswin's AI Chat. All rights reserved.</p>
-  <div class="footer-links">
-    <a href="/privacy">Privacy Policy</a>
-    <a href="/contact">Contact</a>
-    <a href="https://github.com/your-repo" target="#">GitHub</a>
-  </div>
-</footer>
-
-
+      <footer className="footer">
+        <p>© 2025 LIX - AI. All rights reserved.</p>
+        <div className="footer-links">
+          <a href="/">Privacy Policy</a>
+          <a href="/">Contact</a>
+          <a href="/" target="#">GitHub</a>
+        </div>
+      </footer>
     </div>
   );
 };
