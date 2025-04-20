@@ -92,7 +92,7 @@ const ChatBox = () => {
         <form className="chat-form" onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="Ask something to Aswin's AI..."
+            placeholder="Ask something to LIX..."
             value={userMessage}
             onChange={(e) => setUserMessage(e.target.value)}
           />

@@ -254,7 +254,7 @@
   }
 
   .chat-messages{
-    height: 240px;
+    height: 100%;
   }
 
   .sidebar{
