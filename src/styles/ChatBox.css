@@ -120,7 +120,7 @@
 .chat-form input:focus {
   border-color: whitesmoke;
 }
-.chat-form button {
+.mic button {
   padding: 12px 20px;
   background-color: black;
   color: white;
@@ -130,11 +130,11 @@
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
 }
-.chat-form button:hover {
+.mic button:hover {
   transform: translateY(-2px);
   background-color: grey;
 }
-.chat-form button:disabled {
+.mic button:disabled {
   background: #ccc;
   cursor: not-allowed;
 }
@@ -147,6 +147,29 @@
   color: #888;
 }
 
+.SM-buttons{
+  display: flex;
+  gap: 1px;
+}
+
+.sub button {
+  padding: 12px 20px;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+.sub button:hover {
+  transform: translateY(-2px);
+  background-color: grey;
+}
+.sub button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
 
 
 /* Tablet view */
@@ -259,5 +282,59 @@
     height: 60px;
   }
 
+  .sub button{
+    width: 235px;
+  }
 
+  .mic button{
+    margin-top: -2px;
+  }
+
+}
+
+.mic {
+  position: relative;
+  display: inline-block;
+}
+
+.mic button {
+  background-color: black;
+  color: white;
+  border: none;
+
+  font-size: 16px;
+
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  outline: none;
+  position: relative;
+  z-index: 1;
+}
+
+.mic.listening button::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -2px;
+  width: 48px;
+  height: 48px;
+  background-color: grey;
+  border-radius: 50%;
+  animation: pulse 1s infinite;
+  z-index: 0;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
 }
