@@ -138,7 +138,7 @@ const ChatBox = () => {
           </div>
           </div>
         </form>
-        <p className="creation-label">Designed by Lishoni Aswin</p>
+        <p className="creation-label">Designed by <strong style={{color: "grey"}}>Aswin</strong></p>
       </div>
     </div>
   );
