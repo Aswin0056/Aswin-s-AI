@@ -63,7 +63,6 @@ const ChatBox = () => {
       setTyping(false);
     }
   };
-  
 
   return (
     <div className={`chatbox-wrapper ${darkMode ? "dark" : ""}`}>
