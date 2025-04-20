@@ -13,16 +13,16 @@
   background-color: #121212;
 }
 
+.chatbox-header img{
+  height: 100px;
+  width: 100px;
+}
+
 /* Sidebar layout */
 .sidebar {
   width: 250px;
-  background-image: url('https://cococart.in/cdn/shop/collections/Banners-10.webp?v=1679298729&width=533');
-  background-size: cover;        /* Make image cover entire sidebar */
-  background-position: center;   /* Center the image nicely */
-  background-repeat: no-repeat;  /* Prevent repetition */
-  background-attachment: fixed;  /* Keeps image fixed on scroll (optional) */
-  
-  color: white;
+  background-color: grey;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -30,9 +30,8 @@
 }
 
 .chatbox-header {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  color: white;
+ 
 }
 .chatbox-header h1 {
   font-size: 1.4rem;
@@ -119,11 +118,11 @@
   border: 1px solid #555;
 }
 .chat-form input:focus {
-  border-color: #4facfe;
+  border-color: whitesmoke;
 }
 .chat-form button {
   padding: 12px 20px;
-  background-color: #4B0082;
+  background-color: black;
   color: white;
   font-size: 1rem;
   border: none;
@@ -133,7 +132,7 @@
 }
 .chat-form button:hover {
   transform: translateY(-2px);
-  background: linear-gradient(to right, #00f2fe, #4facfe);
+  background-color: grey;
 }
 .chat-form button:disabled {
   background: #ccc;
@@ -190,11 +189,6 @@
     padding: 10px 20px;
   }
 
-  .chatbox-header {
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-  }
 
   .chatbox-header h1 {
     font-size: 1rem;
@@ -228,9 +222,7 @@
     margin-bottom: -5px;
   }
 
-  .chatbox-header{
-    display: block;
-  }
+
 
   .dark-toggle {
     font-size: 0.8rem;
@@ -260,7 +252,7 @@
   }
 
   .chat-messages{
-    height: 350px;
+    height: 400px;
   }
 
   .sidebar{

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "../styles/Ping.css"; // Import the CSS file
 
 const Ping = () => {
   const [status, setStatus] = useState("checking"); // checking | connected | error
@@ -17,37 +18,33 @@ const Ping = () => {
     checkBackend();
   }, []);
 
-  const getDotColor = () => {
+  const getDotClass = () => {
     switch (status) {
       case "connected":
-        return "green";
+        return "dot green";
       case "error":
-        return "red";
+        return "dot red";
       default:
-        return "gray";
+        return "dot gray pulse";
+    }
+  };
+
+  const getStatusText = () => {
+    switch (status) {
+      case "connected":
+        return "Online";
+      case "error":
+        return "Offline";
+      default:
+        return "Checking...";
     }
   };
 
   return (
-    <div style={{ padding: "1rem" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <span
-          style={{
-            width: "12px",
-            height: "12px",
-            borderRadius: "50%",
-            backgroundColor: getDotColor(),
-            display: "inline-block",
-          }}
-        ></span>
-        <span>
-          LIX:{" "}
-          {status === "connected"
-            ? "Online"
-            : status === "error"
-            ? "Offline"
-            : "Checking..."}
-        </span>
+    <div className="ping-container">
+      <div className="ping-box">
+        <span className={getDotClass()}></span>
+        <span className="ping-text">LIX: {getStatusText()}</span>
       </div>
     </div>
   );

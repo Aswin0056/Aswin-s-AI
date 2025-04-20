@@ -68,16 +68,20 @@ const ChatBox = () => {
     <div className={`chatbox-wrapper ${darkMode ? "dark" : ""}`}>
       <div className="sidebar">
         <div className="chatbox-header">
-          <h1>LIX</h1>
-          <Ping />
+
+          <img src={`${process.env.PUBLIC_URL}/logo192.png`} alt="logo" />
+          
         </div>
+     
         <button className="dark-toggle" onClick={toggleDarkMode}>
           {darkMode ? "☀️ Light" : "🌙 Dark"}
         </button>
+     
       </div>
 
       <div className={`chatbox ${darkMode ? "dark" : ""}`}>
         <div className="chat-messages">
+        <Ping />
           {messages.map((msg, i) => (
             <Message key={i} sender={msg.sender} text={msg.text} />
           ))}

@@ -3,7 +3,7 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+    background: linear-gradient(to right, #c3cfe2 , #f5f7fa);
     color: #333;
   }
 
@@ -12,9 +12,9 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color:  #4B0082;
+    background-color:  white;
     padding: 15px 30px;
-    color: white;
+    color: black;
     position: relative;
     border-radius: 18px;
   }
@@ -28,8 +28,8 @@ body {
   }
   
   .nav-logo img {
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
   }
   
   .nav-links {
@@ -39,7 +39,7 @@ body {
   }
   
   .nav-links li a {
-    color: white;
+    color: black;
     text-decoration: none;
     font-weight: 500;
     transition: opacity 0.3s ease;
@@ -54,7 +54,7 @@ body {
     background: none;
     border: none;
     font-size: 2rem;
-    color: white;
+    color: black;
     cursor: pointer;
   }
   
@@ -68,7 +68,7 @@ body {
       position: absolute;
       top: 60px;
       right: 20px;
-      background: #4facfe;
+      background: white;
       flex-direction: column;
       gap: 10px;
       padding: 15px 20px;
@@ -104,7 +104,7 @@ body {
   header h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
-    color: #1e3c72;
+    color: black;
   }
   
   header p {
@@ -121,7 +121,7 @@ body {
   }
   
   section h2 {
-    color: #1e3c72;
+    color: black;
     margin-bottom: 20px;
   }
   
@@ -141,7 +141,7 @@ body {
   }
   
   .chat-button {
-    background-color:  #4B0082;;
+    background-color:  grey;;
     color: white;
     font-size: 1.1rem;
     padding: 15px 30px;
@@ -160,8 +160,8 @@ body {
   .footer {
     margin-top: 80px;
     padding: 30px 20px;
-    background-color: #1e3c72;
-    color: white;
+    background-color: whitesmoke;
+    color: black;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
   }
@@ -178,13 +178,13 @@ body {
   }
   
   .footer-links a {
-    color: #ffffffcc;
+    color: black;
     text-decoration: none;
     transition: color 0.3s;
   }
   
   .footer-links a:hover {
-    color: #ffffff;
+    color: grey;
   }
   
 

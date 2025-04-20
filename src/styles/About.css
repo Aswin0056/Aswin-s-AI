@@ -1,0 +1,74 @@
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 1rem;
+    background: linear-gradient(to right, grey, #111118);
+    min-height: 100vh;
+  }
+  
+  .about-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 2rem 2.5rem;
+    border-radius: 20px;
+    max-width: 800px;
+    color: #e5e7eb;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .about-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+  }
+  
+  .about-tagline {
+    font-size: 1.1rem;
+    color: #9ca3af;
+    margin-bottom: 2rem;
+  }
+  
+  .about-section {
+    margin-bottom: 2rem;
+  }
+  
+  .about-section h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #93c5fd;
+  }
+  
+  .about-section p,
+  .about-section ul {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #d1d5db;
+  }
+  
+  .about-section ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .about-section li {
+    margin-bottom: 0.3rem;
+  }
+  
+  .about-footer {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: white;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+   
+  }
+
+  .azh-studio{
+    text-decoration: none;
+    color: white;
+  }
+  
