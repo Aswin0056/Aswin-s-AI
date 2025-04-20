@@ -26,23 +26,23 @@ const ChatBox = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!userMessage.trim()) return;
-
+  
     const newMessages = [...messages, { sender: "user", text: userMessage }];
     setMessages(newMessages);
     setUserMessage("");
     setTyping(true);
-
+  
     try {
       const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/chat`, {
         message: userMessage,
-      });
-
+      }, { timeout: 5000 });  // Set a 5-second timeout for the request
+  
       const botResponse = res.data;
-
+  
       if (botResponse.redirect) {
         window.open(botResponse.redirect, "_blank");
       }
-
+  
       if (botResponse.fallback) {
         const googleURL = botResponse.answer.match(/https?:\/\/[^ ]+/)?.[0];
         const fallbackMessage = googleURL ? (
@@ -63,6 +63,7 @@ const ChatBox = () => {
       setTyping(false);
     }
   };
+  
 
   return (
     <div className={`chatbox-wrapper ${darkMode ? "dark" : ""}`}>
@@ -70,7 +71,7 @@ const ChatBox = () => {
         <div className="chatbox-header">
 
           <img src={`${process.env.PUBLIC_URL}/logo192.png`} alt="logo" />
-          
+       
         </div>
      
         <button className="dark-toggle" onClick={toggleDarkMode}>
