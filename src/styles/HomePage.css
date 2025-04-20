@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to right, #4facfe, #00f2fe);
+    background-color:  #4B0082;
     padding: 15px 30px;
     color: white;
     position: relative;
@@ -54,7 +54,7 @@ body {
     background: none;
     border: none;
     font-size: 2rem;
-    color: #1e3c72;
+    color: white;
     cursor: pointer;
   }
   
@@ -141,7 +141,7 @@ body {
   }
   
   .chat-button {
-    background: linear-gradient(to right, #4facfe, #00f2fe);
+    background-color:  #4B0082;;
     color: white;
     font-size: 1.1rem;
     padding: 15px 30px;
