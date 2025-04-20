@@ -50,6 +50,7 @@ const HomePage = () => {
 
       <footer className="footer">
         <p>© 2025 LIX. All rights reserved.</p>
+        <p style={{"color":'grey'}}>Powered By <strong style={{"color":'black'}}>Azh</strong><strong style={{"color":'goldenrod'}}>Studio</strong></p>
         <div className="footer-links">
           <a href="/">Privacy Policy</a>
           <a href="/">Contact</a>
