@@ -30,6 +30,7 @@ const HomePage = () => {
       <header className="homepage-header">
         <h1>Welcome to LIX</h1>
         <p>Your personal AI assistant ready to help you with any questions!</p>
+        <p>LIX is not just logic — she expresses, understands, and connects.</p>
       </header>
 
       <section>
