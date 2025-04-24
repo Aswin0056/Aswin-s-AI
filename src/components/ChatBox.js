@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import Message from "./Message";
+// import Message from "./Message";
 import axios from "axios";
 import "../styles/ChatBox.css";
 import Ping from "./Ping";
+import ReactMarkdown from "react-markdown";
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = SpeechRecognition ? new SpeechRecognition() : null;
@@ -12,7 +13,7 @@ const ChatBox = () => {
   const [messages, setMessages] = useState([]);
   const [typing, setTyping] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-  const [listening, setListening] = useState(false); // Track if mic is on
+  const [listening, setListening] = useState(false);
   const chatEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -23,14 +24,10 @@ const ChatBox = () => {
     scrollToBottom();
   }, [messages, typing]);
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
+  const toggleDarkMode = () => setDarkMode(!darkMode);
 
   const speakText = (text) => {
-    if (speechSynthesis.speaking) {
-      speechSynthesis.cancel(); // Stop any ongoing speech
-    }
+    if (speechSynthesis.speaking) speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     speechSynthesis.speak(utterance);
   };
@@ -47,7 +44,8 @@ const ChatBox = () => {
     try {
       const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/chat`, {
         message: userMessage,
-      }, { timeout: 5000 });
+        history: newMessages
+      }, { timeout: 10000 });
 
       const botResponse = res.data;
 
@@ -55,54 +53,34 @@ const ChatBox = () => {
         window.open(botResponse.redirect, "_blank");
       }
 
-      if (botResponse.fallback) {
-        const googleURL = botResponse.answer.match(/https?:\/\/[^ ]+/)?.[0];
-        const fallbackMessage = googleURL ? (
-          <span>
-            I couldn’t find an answer. Try searching:{" "}
-            <a href={googleURL} target="_blank" rel="noopener noreferrer">Google</a>
-          </span>
-        ) : (
-          "I couldn’t find an answer. Try rephrasing your question."
-        );
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { sender: "ai", text: fallbackMessage },
-        ]);
-      } else {
-        speakText(botResponse.answer); // 🔊 Speak the response
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { sender: "ai", text: botResponse.answer },
-        ]);
-      }
+      const botText = botResponse.fallback
+        ? botResponse.answer.match(/https?:\/\/[^ ]+/)
+          ? <span>I couldn’t find an answer. Try searching: <a href={botResponse.answer.match(/https?:\/\/[^ ]+/)[0]} target="_blank" rel="noreferrer">Google</a></span>
+          : "I couldn’t find an answer. Try rephrasing your question."
+        : botResponse.answer;
+
+      if (typeof botText === "string") speakText(botText);
+
+      setMessages((prev) => [...prev, { sender: "ai", text: botText }]);
     } catch (err) {
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { sender: "ai", text: "Error connecting to AI server. Please try again." },
-      ]);
+      setMessages((prev) => [...prev, { sender: "ai", text: "Error connecting to AI server. Please try again." }]);
     } finally {
       setTyping(false);
     }
   };
 
   const handleVoiceInput = () => {
-    if (!recognition) {
-      alert("Your browser doesn't support voice input.");
-      return;
-    }
+    if (!recognition) return alert("Your browser doesn't support voice input.");
 
     recognition.start();
-    setListening(true); // Start mic animation
+    setListening(true);
 
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
       setUserMessage(transcript);
     };
 
-    recognition.onend = () => {
-      setListening(false); // Stop mic animation
-    };
+    recognition.onend = () => setListening(false);
   };
 
   return (
@@ -120,7 +98,9 @@ const ChatBox = () => {
         <div className="chat-messages">
           <Ping />
           {messages.map((msg, i) => (
-            <Message key={i} sender={msg.sender} text={msg.text} />
+            <div key={i} className={`message ${msg.sender}`}>
+              <ReactMarkdown>{msg.text}</ReactMarkdown>
+            </div>
           ))}
           {typing && (
             <div className="typing-indicator">
@@ -141,12 +121,12 @@ const ChatBox = () => {
             <div className={`mic ${listening ? "listening" : ""}`}>
               <button type="button" onClick={handleVoiceInput}>🎙️</button>
             </div>
-
             <div className="sub">
               <button type="submit" disabled={typing}>Send</button>
             </div>
           </div>
         </form>
+
         <p className="creation-label">
           Designed by <strong style={{ color: "grey" }}>Aswin</strong>
         </p>
