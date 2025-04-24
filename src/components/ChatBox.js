@@ -12,6 +12,7 @@ const ChatBox = () => {
   const [messages, setMessages] = useState([]);
   const [typing, setTyping] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [listening, setListening] = useState(false); // Track if mic is on
   const chatEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -27,10 +28,12 @@ const ChatBox = () => {
   };
 
   const speakText = (text) => {
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel(); // Stop any ongoing speech
+    }
     const utterance = new SpeechSynthesisUtterance(text);
     speechSynthesis.speak(utterance);
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,39 +65,45 @@ const ChatBox = () => {
         ) : (
           "I couldn’t find an answer. Try rephrasing your question."
         );
-        setMessages([...newMessages, { sender: "ai", text: fallbackMessage }]);
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { sender: "ai", text: fallbackMessage },
+        ]);
       } else {
         speakText(botResponse.answer); // 🔊 Speak the response
-        setMessages([...newMessages, { sender: "ai", text: botResponse.answer }]);
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { sender: "ai", text: botResponse.answer },
+        ]);
       }
     } catch (err) {
-      setMessages([...newMessages, { sender: "ai", text: "Error connecting to AI server." }]);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { sender: "ai", text: "Error connecting to AI server. Please try again." },
+      ]);
     } finally {
       setTyping(false);
     }
   };
-
-  const [listening, setListening] = useState(false);
 
   const handleVoiceInput = () => {
     if (!recognition) {
       alert("Your browser doesn't support voice input.");
       return;
     }
-  
+
     recognition.start();
     setListening(true); // Start mic animation
-  
+
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
       setUserMessage(transcript);
     };
-  
+
     recognition.onend = () => {
       setListening(false); // Stop mic animation
     };
   };
-  
 
   return (
     <div className={`chatbox-wrapper ${darkMode ? "dark" : ""}`}>
@@ -129,16 +138,18 @@ const ChatBox = () => {
             onChange={(e) => setUserMessage(e.target.value)}
           />
           <div className="SM-buttons">
-          <div className={`mic ${listening ? "listening" : ""}`}>
-  <button type="button" onClick={handleVoiceInput}>🎙️</button>
-</div>
+            <div className={`mic ${listening ? "listening" : ""}`}>
+              <button type="button" onClick={handleVoiceInput}>🎙️</button>
+            </div>
 
-          <div className="sub">
-          <button  type="submit" disabled={typing}>Send</button>
-          </div>
+            <div className="sub">
+              <button type="submit" disabled={typing}>Send</button>
+            </div>
           </div>
         </form>
-        <p className="creation-label">Designed by <strong style={{color: "grey"}}>Aswin</strong></p>
+        <p className="creation-label">
+          Designed by <strong style={{ color: "grey" }}>Aswin</strong>
+        </p>
       </div>
     </div>
   );
