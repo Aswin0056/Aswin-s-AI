@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-// import Message from "./Message";
 import axios from "axios";
 import "../styles/ChatBox.css";
 import Ping from "./Ping";
-import ReactMarkdown from "react-markdown";
+// import ReactMarkdown from "react-markdown";
+import Message from "./Message"; // Importing the Message component
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = SpeechRecognition ? new SpeechRecognition() : null;
@@ -22,7 +22,29 @@ const ChatBox = () => {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, typing]);
+
+    // Load the stored messages from localStorage
+    const storedMessages = JSON.parse(localStorage.getItem("messages"));
+    const timestamp = localStorage.getItem("timestamp");
+
+    console.log("Loaded messages:", storedMessages);
+    console.log("Loaded timestamp:", timestamp);
+
+    if (storedMessages && timestamp) {
+      const currentTime = Date.now();
+      const timeDifference = currentTime - Number(timestamp); // Difference in milliseconds
+      console.log("Time difference:", timeDifference);
+
+      if (timeDifference < 24 * 60 * 60 * 1000) { // Less than 24 hours
+        setMessages(storedMessages);
+      } else {
+        console.log("Clearing messages: Expired");
+        // Clear the messages if they are older than 24 hours
+        localStorage.removeItem("messages");
+        localStorage.removeItem("timestamp");
+      }
+    }
+  }, []);
 
   const toggleDarkMode = () => setDarkMode(!darkMode);
 
@@ -61,7 +83,13 @@ const ChatBox = () => {
 
       if (typeof botText === "string") speakText(botText);
 
-      setMessages((prev) => [...prev, { sender: "ai", text: botText }]);
+      const updatedMessages = [...newMessages, { sender: "ai", text: botText }];
+      setMessages(updatedMessages);
+
+      console.log("Saving messages:", updatedMessages);
+      // Save the messages and timestamp to localStorage
+      localStorage.setItem("messages", JSON.stringify(updatedMessages));
+      localStorage.setItem("timestamp", Date.now().toString());
     } catch (err) {
       setMessages((prev) => [...prev, { sender: "ai", text: "Error connecting to AI server. Please try again." }]);
     } finally {
@@ -83,6 +111,12 @@ const ChatBox = () => {
     recognition.onend = () => setListening(false);
   };
 
+  const clearChat = () => {
+    setMessages([]); // Clear the messages state
+    localStorage.removeItem("messages"); // Remove messages from localStorage
+    localStorage.removeItem("timestamp"); // Remove timestamp from localStorage
+  };
+
   return (
     <div className={`chatbox-wrapper ${darkMode ? "dark" : ""}`}>
       <div className="sidebar">
@@ -92,15 +126,16 @@ const ChatBox = () => {
         <button className="dark-toggle" onClick={toggleDarkMode}>
           {darkMode ? "☀️ Light" : "🌙 Dark"}
         </button>
+        <button className="clear-chat" onClick={clearChat}>
+          Clear Chat
+        </button>
       </div>
 
       <div className={`chatbox ${darkMode ? "dark" : ""}`}>
         <div className="chat-messages">
           <Ping />
           {messages.map((msg, i) => (
-            <div key={i} className={`message ${msg.sender}`}>
-              <ReactMarkdown>{msg.text}</ReactMarkdown>
-            </div>
+            <Message key={i} sender={msg.sender} text={msg.text} />
           ))}
           {typing && (
             <div className="typing-indicator">
@@ -127,9 +162,10 @@ const ChatBox = () => {
           </div>
         </form>
 
-        <p className="creation-label">
-          Designed by <strong style={{ color: "grey" }}>Aswin</strong>
+        <p style={{fontSize: "8px" }} className="creation-label">
+          Developed by <strong style={{ color: "black"}}>Aswin</strong>
         </p>
+        <p style={{"color":'grey', fontSize:"10px", textAlign:"center", marginTop:"-20px"}}>Powered By <strong style={{"color":'black'}}>Azh</strong><strong style={{"color":'goldenrod'}}>Studio</strong></p>
       </div>
     </div>
   );
