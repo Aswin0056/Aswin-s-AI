@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "../styles/ChatBox.css";
 import Ping from "./Ping";
-// import ReactMarkdown from "react-markdown";
 import Message from "./Message"; // Importing the Message component
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -22,7 +21,9 @@ const ChatBox = () => {
 
   useEffect(() => {
     scrollToBottom();
+  }, [messages]); // Re-run the effect every time the messages state changes
 
+  useEffect(() => {
     // Load the stored messages from localStorage
     const storedMessages = JSON.parse(localStorage.getItem("messages"));
     const timestamp = localStorage.getItem("timestamp");
