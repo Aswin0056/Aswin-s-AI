@@ -243,6 +243,13 @@ body {
       flex-direction: column;
       gap: 10px;
     }
+
+    .download-section {
+      width: 50%;
+      padding: 12px 25px;
+      font-size: 16px;
+    }
+
   }
   
   @media (max-width: 480px) {
@@ -274,5 +281,22 @@ body {
     .footer-links a {
       font-size: 0.9rem;
     }
+
   }
   
+  /* Download Section */
+.download-section {
+  margin-top: 40px;
+  padding: 12px 25px;
+  background: linear-gradient(to right, #c3cfe2 , #666666);
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 18px;
+  text-align: center;
+  display: inline-block;
+}
+
+.download-section:hover {
+    background: linear-gradient(to right, #666666 , #c3cfe2 );
+}

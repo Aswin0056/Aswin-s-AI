@@ -49,6 +49,33 @@ const HomePage = () => {
         </Link>
       </div>
 
+
+
+      {/* Download section */}
+
+      <div style={{ textAlign: 'center', marginTop: '40px' }}>
+  <h2 style={{ marginBottom: '20px', fontSize: '24px', color: '#333' }}>
+    📱 Install Our App on Your Android Device
+  </h2>
+  <a
+    className="download-section"
+    href="/LIX.apk"
+    download
+    style={{
+      padding: '10px 20px',
+      backgroundColor: '#4CAF50',
+      color: 'white',
+      textDecoration: 'none',
+      borderRadius: '8px',
+      fontSize: '16px'
+    }}
+  >
+    📥 Download Android App (APK)
+  </a>
+</div>
+
+
+
       <footer className="footer">
         <p>© 2025 LIX. All rights reserved.</p>
         <p style={{"color":'grey'}}>Powered By <strong style={{"color":'black'}}>Azh</strong><strong style={{"color":'goldenrod'}}>Studio</strong></p>
