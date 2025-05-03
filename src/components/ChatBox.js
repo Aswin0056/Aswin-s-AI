@@ -68,7 +68,8 @@ const ChatBox = () => {
       const res = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/chat`, {
         message: userMessage,
         history: newMessages
-      }, { timeout: 10000 });
+      }
+    );
 
       const botResponse = res.data;
 
