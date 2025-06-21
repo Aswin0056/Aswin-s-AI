@@ -1,302 +1,306 @@
-/* HomePage.css */
-
+/* Base Styles */
 body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #c3cfe2 , #f5f7fa);
-    color: #333;
-  }
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #c3cfe2, #f5f7fa);
+  color: #333;
+}
 
 /* Header Nav */
 .header-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color:  white;
-    padding: 15px 30px;
-    color: black;
-    position: relative;
-    border-radius: 18px;
-  }
-  
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
-  
-  .nav-logo img {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-  }
-  
-  .nav-links li a {
-    color: black;
-    text-decoration: none;
-    font-weight: 500;
-    transition: opacity 0.3s ease;
-  }
-  
-  .nav-links li a:hover {
-    opacity: 0.8;
-  }
-  
-  .menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: black;
-    cursor: pointer;
-  }
-  
-  /* Mobile Responsive */
-  @media (max-width: 768px) {
-    .menu-toggle {
-      display: block;
-    }
-  
-    .nav-links {
-      position: absolute;
-      top: 60px;
-      right: 20px;
-      background: white;
-      flex-direction: column;
-      gap: 10px;
-      padding: 15px 20px;
-      border-radius: 10px;
-      display: none;
-      z-index: 10;
-    }
-  
-    .nav-links.open {
-      display: flex;
-    }
-  }
-  
-  
-  .homepage {
-    text-align: center;
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: auto;
-  }
-  
-  .home-logo {
-    width: 100px;
-    height: auto;
-    margin-bottom: 20px;
-    transition: transform 0.3s ease;
-  }
-  
-  .home-logo:hover {
-    transform: scale(1.1);
-  }
-  
-  header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    color: black;
-  }
-  
-  header p {
-    font-size: 1.2rem;
-    color: #555;
-  }
-  
-  section {
-    margin: 50px 0;
-    background-color: white;
-    border-radius: 16px;
-    padding: 30px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  section h2 {
-    color: black;
-    margin-bottom: 20px;
-  }
-  
-  section ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  section ul li {
-    padding: 10px 0;
-    font-size: 1.1rem;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .chat-button-container {
-    margin-top: 40px;
-  }
-  
-  .chat-button {
-    background-color:  grey;;
-    color: white;
-    font-size: 1.1rem;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-  }
-  
-  .chat-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  }
-  
-  .footer {
-    margin-top: 80px;
-    padding: 30px 20px;
-    background-color: whitesmoke;
-    color: black;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-  }
-  
-  .footer p {
-    margin-bottom: 10px;
-  }
-  
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .footer-links a {
-    color: black;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  
-  .footer-links a:hover {
-    color: grey;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  color: black;
+  position: relative;
+  border-radius: 18px;
+  /* background-color: white; */
+  /* box-shadow: 0 4px 8px rgba(0,0,0,0.05); */
+}
 
-  /* Responsive Design */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
 
-@media (max-width: 1024px) {
-    header h1 {
-      font-size: 2rem;
-    }
-  
-    header p {
-      font-size: 1rem;
-    }
-  
-    section {
-      padding: 25px 20px;
-    }
-  
-    .chat-button {
-      font-size: 1rem;
-      padding: 12px 25px;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .home-logo {
-      width: 80px;
-    }
-  
-    header h1 {
-      font-size: 1.8rem;
-    }
-  
-    header p {
-      font-size: 0.95rem;
-    }
-  
-    section h2 {
-      font-size: 1.5rem;
-    }
-  
-    section ul li {
-      font-size: 1rem;
-    }
-  
-    .chat-button {
-      font-size: 1rem;
-      padding: 10px 22px;
-    }
-  
-    .footer {
-      padding: 25px 15px;
-    }
-  
-    .footer-links {
-      flex-direction: column;
-      gap: 10px;
-    }
+.nav-logo img {
+  width: 60px;
+  height: 60px;
+}
 
-    .download-section {
-      width: 50%;
-      padding: 12px 25px;
-      font-size: 16px;
-    }
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+}
 
-  }
-  
-  @media (max-width: 480px) {
-    .homepage {
-      padding: 30px 10px;
-    }
-  
-    header h1 {
-      font-size: 1.5rem;
-    }
-  
-    header p {
-      font-size: 0.9rem;
-    }
-  
-    section {
-      padding: 20px 15px;
-    }
-  
-    .chat-button {
-      width: 50%;
-      font-size: 1rem;
-    }
-  
-    .footer p {
-      font-size: 0.9rem;
-    }
-  
-    .footer-links a {
-      font-size: 0.9rem;
-    }
+.nav-links li a {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
 
-  }
-  
-  /* Download Section */
+.nav-links li a:hover {
+  opacity: 0.7;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: black;
+  cursor: pointer;
+}
+
+/* Home Section */
+.homepage {
+  text-align: center;
+  padding: 60px 20px 40px;
+  max-width: 960px;
+  margin: auto;
+}
+
+.home-logo {
+  width: 100px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.home-logo:hover {
+  transform: scale(1.1);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: black;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Content Sections */
+section {
+  margin: 50px auto;
+  /* background-color: white; */
+  border-radius: 16px;
+  padding: 30px;
+  /* box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05); */
+  max-width: 900px;
+}
+
+section h2 {
+  color: black;
+  margin-bottom: 20px;
+}
+
+section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+section ul li {
+  padding: 10px 0;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #eee;
+}
+
+/* Chat Button */
+.chat-button-container {
+  margin-top: 40px;
+}
+
+.chat-button {
+  background-color: grey;
+  color: white;
+  font-size: 1.1rem;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.chat-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Footer */
+.footer {
+  margin-top: 80px;
+  padding: 40px 20px;
+  background-color: #f0f2f5;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  text-align: center;
+}
+
+.footer p {
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: grey;
+}
+
+/* Download Section */
 .download-section {
   margin-top: 40px;
   padding: 12px 25px;
-  background: linear-gradient(to right, #c3cfe2 , #666666);
+  background: linear-gradient(to right, #c3cfe2, #666666);
   color: white;
   text-decoration: none;
   border-radius: 10px;
   font-size: 18px;
   text-align: center;
   display: inline-block;
+  transition: background 0.3s ease;
 }
 
 .download-section:hover {
-    background: linear-gradient(to right, #666666 , #c3cfe2 );
+  background: linear-gradient(to right, #666666, #c3cfe2);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  section {
+    padding: 25px 20px;
+  }
+
+  .chat-button {
+    font-size: 1rem;
+    padding: 12px 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: white;
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    display: none;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    z-index: 10;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .home-logo {
+    width: 80px;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  header p {
+    font-size: 0.95rem;
+  }
+
+  section h2 {
+    font-size: 1.5rem;
+  }
+
+  section ul li {
+    font-size: 1rem;
+  }
+
+  .chat-button {
+    font-size: 1rem;
+    padding: 10px 22px;
+  }
+
+  .footer {
+    padding: 25px 15px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .download-section {
+    width: 70%;
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage {
+    padding: 30px 10px;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  header p {
+    font-size: 0.9rem;
+  }
+
+  section {
+    padding: 20px 15px;
+  }
+
+  .chat-button {
+    width: 80%;
+    font-size: 1rem;
+  }
+
+  .footer p {
+    font-size: 0.9rem;
+  }
+
+  .footer-links a {
+    font-size: 0.9rem;
+  }
+
+  .download-section {
+    font-size: 15px;
+    width: 80%;
+  }
 }

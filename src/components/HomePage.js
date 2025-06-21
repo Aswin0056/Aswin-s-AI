@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/HomePage.css';
+import Footer from './Footer';
 
 const HomePage = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
+    <div>
     <div className="homepage">
       {/* Header Navigation */}
       <nav className="header-nav">
@@ -75,17 +77,10 @@ const HomePage = () => {
 </div>
 
 
-
-      <footer className="footer">
-        <p>© 2025 LIX. All rights reserved.</p>
-        <p style={{"color":'grey'}}>Powered By <strong style={{"color":'black'}}>Azh</strong><strong style={{"color":'goldenrod'}}>Studio</strong></p>
-        <div className="footer-links">
-          <a href="/">Privacy Policy</a>
-          <a href="/">Contact</a>
-          <a href="/" target="#">GitHub</a>
-        </div>
-      </footer>
+      </div>
+      <Footer />
     </div>
+
   );
 };
 
